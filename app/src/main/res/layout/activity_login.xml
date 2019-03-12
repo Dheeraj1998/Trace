@@ -3,22 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/app_background"
     tools:context=".LoginActivity">
 
     <TextView
-        android:id="@+id/app_name"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
-        android:text="TRACE" />
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="40dp"
+        android:text="Sign In"
+        android:textStyle="bold"
+        android:textColor="@color/colorTitleText"
+        android:textSize="60dp"/>
 
     <EditText
         android:id="@+id/userid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/app_name"
+        android:layout_below="@id/title"
         android:layout_marginStart="40dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="40dp"
@@ -38,8 +41,12 @@
         android:maxLines="1" />
 
     <Button
+        android:id="@+id/loginbtn"
         android:layout_marginTop="60dp"
         style="@style/Widget.AppCompat.Button.Colored"
+        android:longClickable="true"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
         android:layout_below="@id/password"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
