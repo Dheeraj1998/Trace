@@ -82,11 +82,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:backgroundTint="@android:color/holo_green_light"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/add_icon"
+        app:fabSize="auto"
+        app:elevation="6dp"
+        app:rippleColor="@color/colorTitleText" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/stop_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:elevation="6dp"
+        android:src="@drawable/close_icon"
         app:fabSize="auto"
         app:rippleColor="@color/colorTitleText" />
 

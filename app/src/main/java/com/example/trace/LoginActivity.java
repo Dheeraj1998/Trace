@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -24,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
             public boolean onLongClick(View v) {
                 userid.setText("trace_001");
                 password.setText("12345678");
+
                 return true;
             }
         });
