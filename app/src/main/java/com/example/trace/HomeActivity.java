@@ -5,12 +5,11 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -51,13 +50,12 @@ public class HomeActivity extends AppCompatActivity {
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try
-                {
+                try {
                     final_data = "";
                     findBT();
                     openBT();
+                } catch (IOException ex) {
                 }
-                catch (IOException ex) { }
             }
         });
 
@@ -65,36 +63,29 @@ public class HomeActivity extends AppCompatActivity {
         stop_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try
-                {
+                try {
                     closeBT();
+                } catch (IOException ex) {
                 }
-                catch (IOException ex) { }
             }
         });
     }
 
-    void findBT()
-    {
+    void findBT() {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if(mBluetoothAdapter == null)
-        {
+        if (mBluetoothAdapter == null) {
             Toast.makeText(getApplicationContext(), "No bluetooth adapter available", Toast.LENGTH_SHORT).show();
         }
 
-        if(!mBluetoothAdapter.isEnabled())
-        {
+        if (!mBluetoothAdapter.isEnabled()) {
             Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBluetooth, 0);
         }
 
         Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-        if(pairedDevices.size() > 0)
-        {
-            for(BluetoothDevice device : pairedDevices)
-            {
-                if(device.getName().equals("HC-05"))
-                {
+        if (pairedDevices.size() > 0) {
+            for (BluetoothDevice device : pairedDevices) {
+                if (device.getName().equals("HC-05")) {
                     mmDevice = device;
                     break;
                 }
@@ -103,8 +94,7 @@ public class HomeActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Bluetooth Device Found", Toast.LENGTH_SHORT).show();
     }
 
-    void openBT() throws IOException
-    {
+    void openBT() throws IOException {
         UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); //Standard SerialPortService ID
         mmSocket = mmDevice.createRfcommSocketToServiceRecord(uuid);
         mmSocket.connect();
@@ -116,54 +106,40 @@ public class HomeActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Bluetooth Opened", Toast.LENGTH_SHORT).show();
     }
 
-    void beginListenForData()
-    {
+    void beginListenForData() {
         final Handler handler = new Handler();
         final byte delimiter = 10; //This is the ASCII code for a newline character
 
         stopWorker = false;
         readBufferPosition = 0;
         readBuffer = new byte[1024];
-        workerThread = new Thread(new Runnable()
-        {
-            public void run()
-            {
-                while(!Thread.currentThread().isInterrupted() && !stopWorker)
-                {
-                    try
-                    {
+        workerThread = new Thread(new Runnable() {
+            public void run() {
+                while (!Thread.currentThread().isInterrupted() && !stopWorker) {
+                    try {
                         int bytesAvailable = mmInputStream.available();
-                        if(bytesAvailable > 0)
-                        {
+                        if (bytesAvailable > 0) {
                             byte[] packetBytes = new byte[bytesAvailable];
                             mmInputStream.read(packetBytes);
-                            for(int i=0;i<bytesAvailable;i++)
-                            {
+                            for (int i = 0; i < bytesAvailable; i++) {
                                 byte b = packetBytes[i];
-                                if(b == delimiter)
-                                {
+                                if (b == delimiter) {
                                     byte[] encodedBytes = new byte[readBufferPosition];
                                     System.arraycopy(readBuffer, 0, encodedBytes, 0, encodedBytes.length);
                                     final String data = new String(encodedBytes, "US-ASCII");
                                     readBufferPosition = 0;
 
-                                    handler.post(new Runnable()
-                                    {
-                                        public void run()
-                                        {
-                                                final_data = data;
+                                    handler.post(new Runnable() {
+                                        public void run() {
+                                            final_data = data;
                                         }
                                     });
-                                }
-                                else
-                                {
+                                } else {
                                     readBuffer[readBufferPosition++] = b;
                                 }
                             }
                         }
-                    }
-                    catch (IOException ex)
-                    {
+                    } catch (IOException ex) {
                         stopWorker = true;
                     }
                 }
@@ -173,8 +149,7 @@ public class HomeActivity extends AppCompatActivity {
         workerThread.start();
     }
 
-    void closeBT() throws IOException
-    {
+    void closeBT() throws IOException {
         stopWorker = true;
         mmOutputStream.close();
         mmInputStream.close();
@@ -188,7 +163,7 @@ public class HomeActivity extends AppCompatActivity {
                 FirebaseApp.initializeApp(getApplicationContext());
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-                Long tsLong = System.currentTimeMillis()/1000;
+                Long tsLong = System.currentTimeMillis() / 1000;
                 String datastamp = tsLong.toString();
                 final_data = final_data.trim();
                 String[] sub_data = final_data.split("a");
@@ -201,5 +176,20 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+
+    public void startHistory(View view) {
+        Intent temp = new Intent(HomeActivity.this, HistoryActivity.class);
+        startActivity(temp);
+    }
+
+    public void startAnalysis(View view) {
+        Intent temp = new Intent(HomeActivity.this, AnalysisActivity.class);
+        startActivity(temp);
+    }
+
+    public void startFamily(View view) {
+        Intent temp = new Intent(HomeActivity.this, FamilyActivity.class);
+        startActivity(temp);
     }
 }

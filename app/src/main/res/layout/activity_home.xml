@@ -11,10 +11,10 @@
         android:id="@+id/welcome_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
         android:layout_marginStart="30dp"
-        android:textColor="@color/colorTitleText"
+        android:layout_marginTop="60dp"
         android:text="Welcome back."
+        android:textColor="@color/colorTitleText"
         android:textSize="40sp"
         android:textStyle="bold" />
 
@@ -25,6 +25,7 @@
         android:layout_below="@id/welcome_back"
         android:layout_marginStart="30dp"
         android:layout_marginTop="75dp"
+        android:onClick="startHistory"
         android:src="@drawable/icon_1" />
 
     <TextView
@@ -33,8 +34,10 @@
         android:layout_below="@id/icon_1"
         android:layout_marginStart="30dp"
         android:layout_marginTop="5dp"
+        android:onClick="startHistory"
         android:text="History"
         android:textAlignment="center"
+        android:textColor="@color/colorText"
         android:textStyle="bold" />
 
     <ImageView
@@ -45,6 +48,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="75dp"
         android:layout_marginEnd="30dp"
+        android:onClick="startFamily"
         android:src="@drawable/icon_2" />
 
     <TextView
@@ -54,8 +58,10 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="30dp"
+        android:onClick="startFamily"
         android:text="Family"
         android:textAlignment="center"
+        android:textColor="@color/colorText"
         android:textStyle="bold" />
 
     <ImageView
@@ -65,6 +71,7 @@
         android:layout_below="@id/icon_1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
+        android:onClick="startAnalysis"
         android:src="@drawable/icon_3" />
 
     <TextView
@@ -73,8 +80,10 @@
         android:layout_below="@id/icon_3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
+        android:onClick="startAnalysis"
         android:text="Analysis"
         android:textAlignment="center"
+        android:textColor="@color/colorText"
         android:textStyle="bold" />
 
     <android.support.design.widget.FloatingActionButton
@@ -82,14 +91,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:backgroundTint="@android:color/holo_green_light"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
+        android:backgroundTint="@android:color/holo_green_light"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/add_icon"
-        app:fabSize="auto"
         app:elevation="6dp"
+        app:fabSize="auto"
         app:rippleColor="@color/colorTitleText" />
 
     <android.support.design.widget.FloatingActionButton
@@ -98,12 +107,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="@android:color/holo_red_light"
         android:layout_margin="16dp"
+        android:backgroundTint="@android:color/holo_red_light"
         android:clickable="true"
         android:focusable="true"
-        app:elevation="6dp"
         android:src="@drawable/close_icon"
+        app:elevation="6dp"
         app:fabSize="auto"
         app:rippleColor="@color/colorTitleText" />
 
