@@ -20,10 +20,10 @@
     <CalendarView
         android:id="@+id/date_select"
         android:layout_width="match_parent"
-        android:dateTextAppearance="@style/CalenderViewDateCustomText"
         android:layout_height="250dp"
         android:layout_below="@id/history_title"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="40dp"
+        android:dateTextAppearance="@style/CalenderViewDateCustomText">
 
     </CalendarView>
 
@@ -32,6 +32,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/date_select"
-        android:textColor="@color/colorTitleText"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:textColor="@color/colorTitleText" />
 </RelativeLayout>

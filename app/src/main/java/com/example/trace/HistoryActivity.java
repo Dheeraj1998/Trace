@@ -3,7 +3,6 @@ package com.example.trace;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
@@ -39,22 +38,18 @@ public class HistoryActivity extends AppCompatActivity {
 
                 month += 1;
 
-                if(month <= 9) {
+                if (month <= 9) {
                     data_string_start = year + "/0" + month + "/";
                     data_string_end = year + "/0" + month + "/";
-                }
-
-                else{
+                } else {
                     data_string_start = year + "/" + month + "/";
                     data_string_end = year + "/" + month + "/";
                 }
 
-                if(dayOfMonth <= 9) {
+                if (dayOfMonth <= 9) {
                     data_string_start += "0" + dayOfMonth + " 00:00:00";
                     data_string_end += "0" + dayOfMonth + " 23:59:59";
-                }
-
-                else {
+                } else {
                     data_string_start += dayOfMonth + " 00:00:00";
                     data_string_end += dayOfMonth + " 23:59:59";
                 }
@@ -64,10 +59,10 @@ public class HistoryActivity extends AppCompatActivity {
                 Date date = null;
                 try {
                     date = sdf.parse(data_string_start);
-                    start_millis = date.getTime()/1000;
+                    start_millis = date.getTime() / 1000;
 
                     date = sdf.parse(data_string_end);
-                    end_millis = date.getTime()/1000;
+                    end_millis = date.getTime() / 1000;
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -84,7 +79,7 @@ public class HistoryActivity extends AppCompatActivity {
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot data_pack : dataSnapshot.getChildren()) {
                                 if (finalStart_millis <= Long.parseLong(data_pack.getKey()) && finalEnd_millis >= Long.parseLong(data_pack.getKey())) {
-                                    if(recorded_data.length() != 0){
+                                    if (recorded_data.length() != 0) {
                                         recorded_data.setText("Patient | Gas | Humidity | Stress | Temperature\n" + "\n" + "Anay" +
                                                 " | " + data_pack.child("Gas").getValue().toString() +
                                                 " | " + data_pack.child("Humidity").getValue().toString() +
@@ -112,7 +107,7 @@ public class HistoryActivity extends AppCompatActivity {
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot data_pack : dataSnapshot.getChildren()) {
                                 if (finalStart_millis <= Long.parseLong(data_pack.getKey()) && finalEnd_millis >= Long.parseLong(data_pack.getKey())) {
-                                    if(recorded_data.length() != 0){
+                                    if (recorded_data.length() != 0) {
                                         recorded_data.setText("Patient | Gas | Humidity | Stress | Temperature\n" + "\n" + "Akarsh" +
                                                 " | " + data_pack.child("Gas").getValue().toString() +
                                                 " | " + data_pack.child("Humidity").getValue().toString() +
@@ -140,7 +135,7 @@ public class HistoryActivity extends AppCompatActivity {
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot data_pack : dataSnapshot.getChildren()) {
                                 if (finalStart_millis <= Long.parseLong(data_pack.getKey()) && finalEnd_millis >= Long.parseLong(data_pack.getKey())) {
-                                    if(recorded_data.length() != 0){
+                                    if (recorded_data.length() != 0) {
                                         recorded_data.setText("Patient | Gas | Humidity | Stress | Temperature\n" + "\n" + "Advik" +
                                                 " | " + data_pack.child("Gas").getValue().toString() +
                                                 " | " + data_pack.child("Humidity").getValue().toString() +
@@ -168,7 +163,7 @@ public class HistoryActivity extends AppCompatActivity {
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot data_pack : dataSnapshot.getChildren()) {
                                 if (finalStart_millis <= Long.parseLong(data_pack.getKey()) && finalEnd_millis >= Long.parseLong(data_pack.getKey())) {
-                                    if(recorded_data.length() != 0){
+                                    if (recorded_data.length() != 0) {
                                         recorded_data.setText("Patient | Gas | Humidity | Stress | Temperature\n" + "\n" + "Abram" +
                                                 " | " + data_pack.child("Gas").getValue().toString() +
                                                 " | " + data_pack.child("Humidity").getValue().toString() +

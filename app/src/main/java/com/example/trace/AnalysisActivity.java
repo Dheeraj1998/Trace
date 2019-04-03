@@ -2,15 +2,8 @@ package com.example.trace;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.BarGraphSeries;
@@ -26,7 +19,7 @@ public class AnalysisActivity extends AppCompatActivity {
         setTheme(R.style.AppTheme);
 
         GraphView graph_1 = findViewById(R.id.graph_1);
-        LineGraphSeries<DataPoint> series_1 = new LineGraphSeries<>(new DataPoint[] {
+        LineGraphSeries<DataPoint> series_1 = new LineGraphSeries<>(new DataPoint[]{
                 new DataPoint(0, 1),
                 new DataPoint(1, 5),
                 new DataPoint(2, 3)
@@ -42,7 +35,7 @@ public class AnalysisActivity extends AppCompatActivity {
         graph_1.addSeries(series_1);
 
         GraphView graph_2 = findViewById(R.id.graph_2);
-        BarGraphSeries<DataPoint> series_2 = new BarGraphSeries<>(new DataPoint[] {
+        BarGraphSeries<DataPoint> series_2 = new BarGraphSeries<>(new DataPoint[]{
                 new DataPoint(0, 22),
                 new DataPoint(1, 37),
                 new DataPoint(2, 45)
@@ -52,7 +45,7 @@ public class AnalysisActivity extends AppCompatActivity {
         graph_2.addSeries(series_2);
 
         GraphView graph_3 = findViewById(R.id.graph_3);
-        LineGraphSeries<DataPoint> series_3 = new LineGraphSeries<>(new DataPoint[] {
+        LineGraphSeries<DataPoint> series_3 = new LineGraphSeries<>(new DataPoint[]{
                 new DataPoint(0, 5),
                 new DataPoint(1, 2),
                 new DataPoint(2, 3)

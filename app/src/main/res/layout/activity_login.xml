@@ -46,15 +46,15 @@
 
     <Button
         android:id="@+id/loginbtn"
-        android:backgroundTint="@color/colorAccent"
-        android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
+        android:backgroundTint="@color/colorAccent"
         android:longClickable="true"
         android:paddingStart="40dp"
         android:paddingEnd="40dp"
-        android:text="Login" />
+        android:text="Login"
+        android:textColor="@android:color/white" />
 </RelativeLayout>
